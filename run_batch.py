@@ -37,7 +37,8 @@ for i in images:
     for sett in settings:
 
         timestamp = datetime.timestamp(datetime.now())
-        command = ['python', 'neural_style.py', '--content', i, '--output', 'output/' + str(timestamp) + '.jpg']
-
-        comm_string = ' '.join(command + sett)
+        command = ['python', 'neural_style.py', '--content', i, '--output', 'images/output/' + str(timestamp) + '.jpg']
+        ssstyles = ['--styles'] + styles
+        comm_string = ' '.join(command + sett + ssstyles)
         print(comm_string)
+        os.system(comm_string)
