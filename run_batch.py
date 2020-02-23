@@ -34,11 +34,14 @@ settings = [
 
 for i in images:
 
-    for sett in settings:
+    for s in styles:
 
-        timestamp = datetime.timestamp(datetime.now())
-        command = ['python', 'neural_style.py', '--content', i, '--output', 'images/output/' + str(timestamp) + '.jpg']
-        ssstyles = ['--styles'] + styles
-        comm_string = ' '.join(command + sett + ssstyles)
-        print(comm_string)
-        os.system(comm_string)
+        for sett in settings:
+
+            timestamp = datetime.timestamp(datetime.now())
+            outfile = 'images/output/' + str(timestamp) + '.jpg'
+            command = ['python', 'neural_style.py', '--content', i, '--output', outfile]
+            ssstyles = ['--styles'] + [s]
+            comm_string = ' '.join(command + sett + ssstyles)
+            print(comm_string)
+            os.system(comm_string)
