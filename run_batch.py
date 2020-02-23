@@ -32,14 +32,18 @@ settings = [
     ["--iterations", str(3000), "--style-layer-weight-exp", str(2.0)]
 ]
 
+idx = 0
+
 for i in images:
 
     for s in styles:
 
+        idx += 1
+
         for sett in settings:
 
             timestamp = datetime.timestamp(datetime.now())
-            outfile = 'images/output/' + str(timestamp) + '.jpg'
+            outfile = 'images/output/' + str(timestamp) + "_" + str(idx) + '.jpg'
             command = ['python', 'neural_style.py', '--content', i, '--output', outfile]
             ssstyles = ['--styles'] + [s]
             comm_string = ' '.join(command + sett + ssstyles)
